@@ -15,7 +15,6 @@
 		BB343C2A2C85076800BE2AF5 /* BasicTranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB343C252C85076800BE2AF5 /* BasicTranslationView.swift */; };
 		BB343C2B2C85076800BE2AF5 /* Translation_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB343C262C85076800BE2AF5 /* Translation_DemoApp.swift */; };
 		BB343C2D2C85078F00BE2AF5 /* FlexibleTranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB343C2C2C85078F00BE2AF5 /* FlexibleTranslationView.swift */; };
-		BB3E85832C88BB41002F9FC5 /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3E85822C88BB41002F9FC5 /* TranslationService.swift */; };
 		BB56F2582C867EC3007D4B5B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56F2572C867EC3007D4B5B /* Launch Screen.storyboard */; };
 		BB6DC88A2C87B9A4001697B8 /* LiveTextFromCameraScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6DC8872C87B9A4001697B8 /* LiveTextFromCameraScan.swift */; };
 		BB6DC88B2C87B9A4001697B8 /* TextFromImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6DC8892C87B9A4001697B8 /* TextFromImageView.swift */; };
@@ -36,7 +35,6 @@
 		BB343C252C85076800BE2AF5 /* BasicTranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTranslationView.swift; sourceTree = "<group>"; };
 		BB343C262C85076800BE2AF5 /* Translation_DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation_DemoApp.swift; sourceTree = "<group>"; };
 		BB343C2C2C85078F00BE2AF5 /* FlexibleTranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleTranslationView.swift; sourceTree = "<group>"; };
-		BB3E85822C88BB41002F9FC5 /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
 		BB56F2572C867EC3007D4B5B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BB6DC8862C87B9A4001697B8 /* DataScanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScanVC.swift; sourceTree = "<group>"; };
 		BB6DC8872C87B9A4001697B8 /* LiveTextFromCameraScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTextFromCameraScan.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 			children = (
 				BB343C262C85076800BE2AF5 /* Translation_DemoApp.swift */,
 				BB271AAD2C85550B008C4CA7 /* StartTab.swift */,
-				BB3E85822C88BB41002F9FC5 /* TranslationService.swift */,
 				BB6DC8912C87BBE6001697B8 /* TabViews */,
 				BB6DC8922C87BC06001697B8 /* Models */,
 				BB6DC88E2C87B9AB001697B8 /* ScanText Files */,
@@ -209,7 +206,6 @@
 				BB6DC8902C87BA16001697B8 /* ScanAndTranslateView.swift in Sources */,
 				BBC2F73D2C86516E006E49B2 /* Review.swift in Sources */,
 				BB343C2D2C85078F00BE2AF5 /* FlexibleTranslationView.swift in Sources */,
-				BB3E85832C88BB41002F9FC5 /* TranslationService.swift in Sources */,
 				BB343C2A2C85076800BE2AF5 /* BasicTranslationView.swift in Sources */,
 				BB271AAE2C85550B008C4CA7 /* StartTab.swift in Sources */,
 				BB343C2B2C85076800BE2AF5 /* Translation_DemoApp.swift in Sources */,

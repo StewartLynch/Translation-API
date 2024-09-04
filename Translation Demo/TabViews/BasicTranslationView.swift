@@ -14,33 +14,23 @@
 
 
 import SwiftUI
-import Translation
 
 struct BasicTranslationView: View {
     @State private var textToTranslate = ""
     @FocusState private var focusState: Bool
-    @State private var presentTranslator = false
-    @State private var translatedText = ""
     var body: some View {
         NavigationStack {
             Form {
                 TextField("Text to translate", text: $textToTranslate, axis: .vertical)
                     .focused($focusState)
                     .textFieldStyle(.roundedBorder)
-                Text(translatedText)
+                
                 Button("Translate", systemImage: "translate") {
-                    presentTranslator.toggle()
                     focusState = false
                 }
                 .buttonStyle(.borderedProminent)
                 .foregroundStyle(.white)
                 .disabled(textToTranslate.isEmpty)
-//                .translationPresentation(isPresented: $presentTranslator, text: textToTranslate)
-                .translationPresentation(
-                    isPresented: $presentTranslator,
-                    text: textToTranslate) {
-                       translatedText = $0
-                    }
             }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
@@ -56,7 +46,7 @@ struct BasicTranslationView: View {
         }
     }
     
-  
+    
 }
 
 #Preview {

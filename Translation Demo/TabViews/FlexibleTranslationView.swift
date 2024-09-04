@@ -14,54 +14,22 @@
 
 
 import SwiftUI
-import Translation
-import AVFoundation
 
 struct FlexibleTranslationView: View {
-    @Environment(TranslationService.self) var translationService
     @State private var textToTranslate = ""
     @FocusState private var focusState: Bool
-    @State private var targetLanguage = Locale.Language(
-        languageCode: "en",
-        script: nil,
-        region: "US"
-    )
-    @State private var configuration: TranslationSession.Configuration?
+    @State private var translatedText = ""
     var body: some View {
         NavigationStack {
             Form {
                 TextField("Text to translate", text: $textToTranslate, axis: .vertical)
                     .focused($focusState)
                     .textFieldStyle(.roundedBorder)
-                Text(translationService.translatedText)
+                Text(translatedText)
                     .italic()
                     .textSelection(.enabled)
-                    .translationTask(configuration) { session in
-                        do {
-                            try await translationService.translate(
-                                text: textToTranslate,
-                                using: session
-                            )
-                        } catch {
-                            translationService.translatedText = ""
-                            print(error.localizedDescription)
-                        }
-                    }
-                Picker("Target Language", selection: $targetLanguage) {
-                    ForEach(translationService.availableLanguages) { language in
-                        Text(language.localizedName())
-                            .tag(language.locale)
-                    }
-                }
-                .onChange(of: targetLanguage) { oldValue, newValue in
-                    if newValue != oldValue {
-                        configuration?.invalidate()
-                        configuration = TranslationSession.Configuration(target: targetLanguage)
-                    }
-                }
                 HStack {
                     Button("Translate", systemImage: "translate") {
-                        triggerTranslation()
                         focusState = false
                     }
                     .buttonStyle(.borderedProminent)
@@ -69,15 +37,11 @@ struct FlexibleTranslationView: View {
                     .disabled(textToTranslate.isEmpty)
                     Spacer()
                     Button {
-                        let utterance = AVSpeechUtterance(string: translationService.translatedText)
-                        utterance.voice = AVSpeechSynthesisVoice(
-                            language: targetLanguage.languageCode?.debugDescription
-                        )
-                        AVSpeechSynthesizer().speak(utterance)
+                        
                     } label: {
                         Image(systemName: "speaker.wave.2.bubble")
                     }
-                    .disabled(translationService.translatedText.isEmpty)
+                    .disabled(translatedText.isEmpty)
                 }
             }
             .toolbar {
@@ -93,18 +57,9 @@ struct FlexibleTranslationView: View {
             .navigationTitle("Flexible Translation")
         }
     }
-    func triggerTranslation() {
-        print("Trigger translation")
-        if configuration == nil {
-            configuration = TranslationSession.Configuration(target: targetLanguage)
-        } else {
-            configuration?.invalidate()
-        }
-    }
 }
 
 #Preview {
     FlexibleTranslationView()
-        .environment(TranslationService())
 }
 

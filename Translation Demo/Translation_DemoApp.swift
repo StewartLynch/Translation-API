@@ -17,11 +17,9 @@ import SwiftUI
 
 @main
 struct Translation_DemoApp: App {
-    @State private var translationService = TranslationService()
     var body: some Scene {
         WindowGroup {
             StartTab()
-                .environment(translationService)
         }
     }
 }
