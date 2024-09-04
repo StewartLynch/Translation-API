@@ -1,6 +1,6 @@
 # Translation API
 
-![mac128](Images/mac128.png) This is the starter project  for the video on the Translation API.
+![mac128](Images/mac128.png) This is the completed source code for Part 1 of the video on the Translation API.
 
 
 
