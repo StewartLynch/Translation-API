@@ -18,10 +18,15 @@ struct LiveTextFromCameraScan: View {
     @Environment(\.dismiss) var dismiss
     @Binding var liveScan: Bool
     @Binding var scannedText: String
+    var triggerTranslation: (() -> Void)? = nil
     var body: some View {
         NavigationStack {
             VStack {
-                DataScannerVC(scannedText: $scannedText, liveScan: $liveScan)
+                DataScannerVC(
+                    scannedText: $scannedText,
+                    liveScan: $liveScan,
+                    triggerTranslation: triggerTranslation
+                )
                 Text("Capture Text")
                 Button("Cancel") {
                     dismiss()

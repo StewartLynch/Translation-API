@@ -101,8 +101,8 @@
 		BB6DC88E2C87B9AB001697B8 /* ScanText Files */ = {
 			isa = PBXGroup;
 			children = (
-				BB6DC8862C87B9A4001697B8 /* DataScanVC.swift */,
 				BB6DC8872C87B9A4001697B8 /* LiveTextFromCameraScan.swift */,
+				BB6DC8862C87B9A4001697B8 /* DataScanVC.swift */,
 				BB6DC8882C87B9A4001697B8 /* LiveTextUIImageView.swift */,
 				BB6DC8892C87B9A4001697B8 /* TextFromImageView.swift */,
 				BB11E9D12C87DEAE00BE09B0 /* ImagePicker.swift */,
@@ -354,6 +354,7 @@
 				DEVELOPMENT_TEAM = RKV4UP49S6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to access camera so we can scan for text";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -384,6 +385,7 @@
 				DEVELOPMENT_TEAM = RKV4UP49S6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to access camera so we can scan for text";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -14,11 +14,14 @@
 
 
 import SwiftUI
+import Translation
 
 struct MultipleTranslationsView: View {
+    @Environment(TranslationService.self) private var translationService
+    @State private var configuration: TranslationSession.Configuration?
     var body: some View {
         NavigationStack {
-            List(Review.samples) { review in
+            List(translationService.reviews) { review in
                 VStack {
                     Text(review.comment)
                     if !review.translatedComment.isEmpty {
@@ -26,16 +29,24 @@ struct MultipleTranslationsView: View {
                     }
                 }
             }
+            .translationTask(configuration) { session in
+                do {
+//                    try await translationService.translateAllAtOnce(using: session)
+                    try await translationService.translateSequence(using: session)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
             .navigationTitle("Multiple translations")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Reset") {
-                        
+                        translationService.removeTranslations()
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        
+                        triggerTranslation()
                     } label: {
                         Image(systemName: "translate")
                     }
@@ -43,8 +54,17 @@ struct MultipleTranslationsView: View {
             }
         }
     }
+    
+    func triggerTranslation() {
+        if configuration == nil {
+            configuration = .init(target: .init(identifier: "en"))
+        } else {
+            configuration?.invalidate()
+        }
+    }
 }
 
 #Preview {
     MultipleTranslationsView()
+        .environment(TranslationService())
 }

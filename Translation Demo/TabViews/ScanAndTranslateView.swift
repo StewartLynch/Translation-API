@@ -13,28 +13,52 @@
 // Copyright © 2024 CreaTECH Solutions. All rights reserved.
 
 import SwiftUI
+import Translation
+import VisionKit
+import PhotosUI
 
 struct ScanAndTranslateView: View {
+    @Environment(TranslationService.self) private var translationService
+    @State private var configuration: TranslationSession.Configuration?
     @State private var scannedText = ""
     @FocusState var focusState: Bool
+    @State private var imagePicker = ImagePicker()
+    @State private var liveScan = false
     var body: some View {
         NavigationStack{
             VStack {
                 TextField("Scanned Text Here", text: $scannedText, axis: .vertical)
                     .textFieldStyle(.roundedBorder)
                     .focused($focusState)
-                Text("Translated Text Here")
+                Text(translationService.translatedText)
                     .italic()
-                // This needds to be conditional on camera availability
-                Button("Scan with Camera") {
-                    focusState = false
+                if DataScannerViewController.isSupported {
+                    Button("Scan with Camera") {
+                        liveScan.toggle()
+                        focusState = false
+                    }
+                   
+                } else {
+                    Text("This device does not support Live Text from camera scan")
                 }
-                .buttonStyle(.borderedProminent)
-                // This will be conditional if supports live VisionKit
-                // PhotoPicker here
-                
+                if ImageAnalyzer.isSupported {
+                    PhotosPicker(selection: $imagePicker.imageSelection) {
+                        Text("Select Image")
+                    }
+                } else {
+                    Text("This device does not support Live Text from photo scan")
+                }
                 Spacer()
             }
+            .translationTask(configuration) { session in
+                do {
+                    try await translationService.translate(text: scannedText, using: session)
+                } catch {
+                    translationService.translatedText = ""
+                    print(error.localizedDescription)
+                }
+            }
+            .buttonStyle(.borderedProminent)
             .padding()
             .navigationTitle("Scan and translate")
             .toolbar {
@@ -47,10 +71,33 @@ struct ScanAndTranslateView: View {
                     }
                 }
             }
+            .sheet(item: $imagePicker.imageToScan) { imageToScan in
+                TextFromImageView(
+                    imageToScan: imageToScan.image,
+                    scannedText: $scannedText,
+                    triggerTranslation: triggerTranslation
+                )
+            }
+            .sheet(isPresented: $liveScan) {
+                LiveTextFromCameraScan(
+                    liveScan: $liveScan,
+                    scannedText: $scannedText,
+                    triggerTranslation: triggerTranslation
+                )
+            }
+        }
+    }
+    
+    func triggerTranslation() {
+        if configuration == nil {
+            configuration = .init(target: .init(identifier: "en"))
+        } else {
+            configuration?.invalidate()
         }
     }
 }
 
 #Preview {
     ScanAndTranslateView()
+        .environment(TranslationService())
 }

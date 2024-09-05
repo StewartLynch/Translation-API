@@ -21,6 +21,7 @@ struct TextFromImageView: View {
     @Binding var scannedText: String
     
     @State private var currentPastboard = ""
+    var triggerTranslation: (()-> Void)? = nil
     
     var body: some View {
         NavigationStack {
@@ -31,6 +32,9 @@ struct TextFromImageView: View {
                     if let string = pastboard.string {
                         if !string.isEmpty {
                             scannedText = string
+                            if let triggerTranslation {
+                                triggerTranslation()
+                            }
                         }
                     }
                     dismiss()
