@@ -4,9 +4,11 @@
 
 
 
-Part 1 Release Date: October 13, 2024
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=uxYsliVM6aE
+" target="_blank"><img src="http://img.youtube.com/vi/uxYsliVM6aE/0.jpg" 
+alt="Part 1" width="480" height="360" border="1" /></a>
 
-Part 2 Release Date: October 20, 2024
+Part 2 Release Date: November 3, 2024
 
  If you want to support my work, you can - </br>
 
