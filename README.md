@@ -2,11 +2,9 @@
 
 ![mac128](Images/mac128.png) This is the completed project for parts 1 and 2  for the video on the Translation API.
 
-
-
-Part 1 Release Date: October 13, 2024
-
-Part 2 Release Date: October 20, 2024
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=w8vU1BHsZUM
+" target="_blank"><img src="http://img.youtube.com/vi/w8vU1BHsZUM/0.jpg" 
+alt="Translatioin API Part 2" width="480" height="360" border="1" /></a>
 
  If you want to support my work, you can - </br>
 
